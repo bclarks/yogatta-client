@@ -1,4 +1,4 @@
-import logo from "../logo.svg";
+import logo from "../1bd0810ff4454b4ab644323927b0b826 (1).png";
 import "../App.css";
 
 function HomePage() {
@@ -6,17 +6,6 @@ function HomePage() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
