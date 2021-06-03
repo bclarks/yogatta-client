@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
+import logo from "../1bd0810ff4454b4ab644323927b0b826 (1).png";
 
 const Navbar = (props) => {
   return (
     <nav>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP} - created with IronLauncher
+        <img src={logo} className="App-logo" alt="logo" />
+        <br></br> When you just can't even
       </Link>
 
       <div className="nav__authLinks">
