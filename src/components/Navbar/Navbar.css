@@ -1,19 +1,19 @@
 nav {
   display: flex;
   padding: 1em;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  background: white;
+  background: seashell;
   font-weight: 600;
 }
 
 .nav__projectName {
-  color: purple;
+  color: rgb(172, 114, 172);
   text-decoration: none;
 }
 
 .authLink {
-  color: #61dafb;
+  color: purple;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
