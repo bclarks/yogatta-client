@@ -10,7 +10,7 @@ const Navbar = (props) => {
     <nav>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
         <img src={logo} className="App-logo" alt="logo" />
-        <br></br> When you just can't even
+        <br></br> When you just literally can't even
       </Link>
 
       <div className="nav__authLinks">
