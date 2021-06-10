@@ -13,6 +13,8 @@ import * as PATHS from "./utils/paths";
 import * as CONSTS from "./utils/consts";
 import ProfilePage from "./pages/ProfilePage";
 import VideoPage from "./pages/VideoPage";
+import SearchBar from "./components/SearchBar/SearchBar.jsx";
+import MyVideos from "./pages/MyVideos.jsx";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -84,6 +86,13 @@ export default function App() {
           exact
           path={PATHS.PROFILEPAGE}
           component={ProfilePage}
+          user={user}
+        />
+
+        <ProtectedRoute
+          exact
+          path={PATHS.MYVIDEOS}
+          component={MyVideos}
           user={user}
         />
       </Switch>

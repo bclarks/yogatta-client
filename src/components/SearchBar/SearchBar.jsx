@@ -15,7 +15,7 @@ function SearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button>Search YouTube</button>
+        <button>Yogatta let go</button>
       </form>
       {list &&
         (list.length === 0 ? (

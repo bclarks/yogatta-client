@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
+import { Link } from "react-router-dom";
 
 function ProfilePage(props) {
   const { user } = props;
@@ -20,7 +21,7 @@ function ProfilePage(props) {
       </p>
 
       <p>
-        <button className="profileButtons">My Videos</button>
+        <Link to={PATHS.MYVIDEOS}>My saved videos</Link>
       </p>
     </div>
   );

@@ -5,7 +5,6 @@ import SearchBar from "../components/SearchBar/SearchBar";
 function HomePage() {
   return (
     <div className="App">
-      <SearchBar />
       <header className="App-header">
         <img src={sloth} className="App-logo" alt="sloth" />
       </header>
