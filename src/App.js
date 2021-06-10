@@ -84,6 +84,7 @@ export default function App() {
           exact
           path={PATHS.PROFILEPAGE}
           component={ProfilePage}
+          user={user}
         />
       </Switch>
     </div>
