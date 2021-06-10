@@ -1,13 +1,14 @@
 import React from "react";
 import * as CONSTS from "../../utils/consts.js";
 import * as PATHS from "../../utils/paths.js";
+import { useYoutube } from "../../context/Search.context.js";
+import { useHistory } from "react-router-dom";
 
 function SearchBar() {
-  const [query, setQuery] = React.useState("Relaxing Meditation");
-  const [list, setList] = React.useState(null);
-  const search = (e) => {
-    e.preventDefault();
-    searchYouTube(query).then(setList);
+  const { query, setQuery, search, list } = useYoutube();
+  const history = useHistory();
+  const handleClick = () => {
+    history.push("/VideoPage");
   };
   return (
     <div>
@@ -17,34 +18,10 @@ function SearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button>Yogatta let go</button>
+        <button onClick={handleClick} type="button">
+          Yogatta let go
+        </button>
       </form>
-      {list &&
-        (list.length === 0 ? (
-          <p>No results</p>
-        ) : (
-          <ul className="items">
-            {list.map((item) => (
-              <li className="item" key={item.id}>
-                <div>
-                  <b>
-                    <a href={item.link}>{item.title}</a>
-                  </b>
-                  <p>{item.description}</p>
-                </div>
-                <ul className="meta">
-                  <li>
-                    By: <a href={item.author.ref}>{item.author.name}</a>
-                  </li>
-                  <li>Views: {item.views}</li>
-                  <li>Duration: {item.duration}</li>
-                  <li>Uploaded: {item.uploaded_at}</li>
-                </ul>
-                <img alt="" src={item.thumbnail} />
-              </li>
-            ))}
-          </ul>
-        ))}
     </div>
   );
 }

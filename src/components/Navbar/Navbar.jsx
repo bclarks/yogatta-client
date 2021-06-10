@@ -37,6 +37,9 @@ const Navbar = (props) => {
           </>
         )}
       </div>
+      <p className="search-bar">
+        <SearchBar />
+      </p>
     </nav>
   );
 };

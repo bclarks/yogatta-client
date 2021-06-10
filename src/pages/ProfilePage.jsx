@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
 import { Link } from "react-router-dom";

@@ -13,10 +13,10 @@ import * as PATHS from "./utils/paths";
 import * as CONSTS from "./utils/consts";
 import ProfilePage from "./pages/ProfilePage";
 import VideoPage from "./pages/VideoPage";
-import SearchBar from "./components/SearchBar/SearchBar.jsx";
 import MyVideos from "./pages/MyVideos.jsx";
 import Meditate from "./pages/Meditate.jsx";
 import EditProfile from "./pages/EditProfile.jsx";
+import SearchWrapper from "./context/Search.context";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -62,54 +62,56 @@ export default function App() {
     return <LoadingComponent />;
   }
   return (
-    <div className="App">
-      <Navbar handleLogout={handleLogout} user={user} />
-      <Switch>
-        <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
-        <NormalRoute
-          exact
-          path={PATHS.SIGNUPPAGE}
-          authenticate={authenticate}
-          component={Signup}
-        />
-        <NormalRoute
-          exact
-          path={PATHS.LOGINPAGE}
-          authenticate={authenticate}
-          component={LogIn}
-        />
-        <ProtectedRoute
-          exact
-          path={PATHS.PROTECTEDPAGE}
-          component={ProtectedPage}
-          user={user}
-        />
-        <ProtectedRoute
-          exact
-          path={PATHS.PROFILEPAGE}
-          component={ProfilePage}
-          user={user}
-        />
+    <SearchWrapper>
+      <div className="App">
+        <Navbar handleLogout={handleLogout} user={user} />
+        <Switch>
+          <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+          <NormalRoute
+            exact
+            path={PATHS.SIGNUPPAGE}
+            authenticate={authenticate}
+            component={Signup}
+          />
+          <NormalRoute
+            exact
+            path={PATHS.LOGINPAGE}
+            authenticate={authenticate}
+            component={LogIn}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROTECTEDPAGE}
+            component={ProtectedPage}
+            user={user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROFILEPAGE}
+            component={ProfilePage}
+            user={user}
+          />
 
-        <ProtectedRoute
-          exact
-          path={PATHS.MYVIDEOS}
-          component={MyVideos}
-          user={user}
-        />
-        <ProtectedRoute
-          exact
-          path={PATHS.MEDIDATE}
-          component={Meditate}
-          user={user}
-        />
-        <ProtectedRoute
-          exact
-          path={PATHS.EDITPROFILE}
-          component={EditProfile}
-          user={user}
-        />
-      </Switch>
-    </div>
+          <ProtectedRoute
+            exact
+            path={PATHS.MYVIDEOS}
+            component={MyVideos}
+            user={user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.MEDIDATE}
+            component={Meditate}
+            user={user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.EDITPROFILE}
+            component={EditProfile}
+            user={user}
+          />
+        </Switch>
+      </div>
+    </SearchWrapper>
   );
 }

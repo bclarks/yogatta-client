@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as CONSTS from "../utils/consts.js";
-import AUTH_SERVICE from "../services/auth.js";
+import * as PATHS from "../utils/paths";
 
-function EditProfile(props) {
-  const { user } = props;
+function EditProfile() {
   return (
     <div>
       <h1>Edit your profile</h1>
@@ -25,8 +24,10 @@ function EditProfile(props) {
           required
         />
       </form>
+      <div>
+        <button onClick={EditProfile}> Submit </button>
+      </div>
     </div>
   );
 }
-
 export default EditProfile;
