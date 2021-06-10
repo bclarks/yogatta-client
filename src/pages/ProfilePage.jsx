@@ -14,9 +14,7 @@ function ProfilePage(props) {
         deserved time for yourself.{" "}
       </h2>
       <br></br>
-      <p>
-        <button className="profileButtons">Browse videos</button>
-      </p>
+
       <p>
         <button className="profileButtons">Medidate</button>
       </p>
