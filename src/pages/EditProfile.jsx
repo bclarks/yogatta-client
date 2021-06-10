@@ -13,8 +13,7 @@ function EditProfile(props) {
           id="input-username"
           type="text"
           name="username"
-          placeholder="Username"
-          value={user.username}
+          placeholder="Desired Username"
           required
         />
         <label>Password</label>
@@ -22,8 +21,7 @@ function EditProfile(props) {
           id="input-password"
           type="password"
           name="password"
-          placeholder="Password"
-          value={user.password}
+          placeholder="Desired Password"
           required
         />
       </form>

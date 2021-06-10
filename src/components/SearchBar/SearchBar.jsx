@@ -1,4 +1,6 @@
 import React from "react";
+import * as CONSTS from "../../utils/consts.js";
+import * as PATHS from "../../utils/paths.js";
 
 function SearchBar() {
   const [query, setQuery] = React.useState("Relaxing Meditation");
@@ -8,7 +10,7 @@ function SearchBar() {
     searchYouTube(query).then(setList);
   };
   return (
-    <div className="app">
+    <div>
       <form onSubmit={search}>
         <input
           autoFocus
