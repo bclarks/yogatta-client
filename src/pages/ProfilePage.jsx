@@ -17,11 +17,15 @@ function ProfilePage(props) {
       <br></br>
 
       <p>
-        <button className="profileButtons">Medidate</button>
+        <Link to={PATHS.MEDIDATE} className="med-link">
+          Meditate
+        </Link>
       </p>
 
       <p>
-        <Link to={PATHS.MYVIDEOS}>My saved videos</Link>
+        <Link to={PATHS.MYVIDEOS} className="saved-link">
+          My saved videos
+        </Link>
       </p>
     </div>
   );
