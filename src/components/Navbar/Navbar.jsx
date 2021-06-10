@@ -22,6 +22,7 @@ const Navbar = (props) => {
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
             </button>
+            <Link to={PATHS.PROFILEPAGE}>Profile</Link>
           </>
         ) : (
           <>
