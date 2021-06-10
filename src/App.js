@@ -16,6 +16,7 @@ import VideoPage from "./pages/VideoPage";
 import SearchBar from "./components/SearchBar/SearchBar.jsx";
 import MyVideos from "./pages/MyVideos.jsx";
 import Meditate from "./pages/Meditate.jsx";
+import EditProfile from "./pages/EditProfile.jsx";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -100,6 +101,12 @@ export default function App() {
           exact
           path={PATHS.MEDIDATE}
           component={Meditate}
+          user={user}
+        />
+        <ProtectedRoute
+          exact
+          path={PATHS.EDITPROFILE}
+          component={EditProfile}
           user={user}
         />
       </Switch>

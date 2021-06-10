@@ -27,6 +27,11 @@ function ProfilePage(props) {
           My saved videos
         </Link>
       </p>
+      <p>
+        <Link to={PATHS.EDITPROFILE} className="edit-prof">
+          Edit Profile
+        </Link>
+      </p>
     </div>
   );
 }

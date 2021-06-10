@@ -7,3 +7,4 @@ export const VIDEOPAGE = "/videos";
 export const SINGLEVIDEO = "${VIDEOSPAGE}/:videoID";
 export const MYVIDEOS = "/savedvideos";
 export const MEDIDATE = "/meditate";
+export const EDITPROFILE = "/editProfile";

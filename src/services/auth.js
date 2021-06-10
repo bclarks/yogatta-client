@@ -60,6 +60,7 @@ export function logout() {
         Authorization: localStorage.getItem(CONSTS.ACCESS_TOKEN),
       },
     })
+
     .then(successStatus)
     .catch(internalServerError);
 }
