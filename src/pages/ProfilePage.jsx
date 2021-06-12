@@ -2,10 +2,22 @@ import React from "react";
 import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
 import { Link } from "react-router-dom";
+import UpdatePassword from "../components/Profile/UpdatePassword";
+import UpdateProfile from "../components/Profile/UpdateProfile";
 
 function ProfilePage(props) {
+  const [displayUpdateProfile, setDisplayUpdateProfile] = React.useState(false);
+  const [displayUpdatePassword, setDisplayUpdatePassword] =
+    React.useState(false);
   const { user } = props;
 
+  function profileToggle() {
+    setDisplayUpdateProfile(!displayUpdateProfile);
+  }
+
+  function passwordToggle() {
+    setDisplayUpdatePassword(!displayUpdatePassword);
+  }
   return (
     <div>
       <h1>Hey, you. </h1>
@@ -27,11 +39,13 @@ function ProfilePage(props) {
           My saved videos
         </Link>
       </p>
-      <p>
-        <Link to={PATHS.EDITPROFILE} className="edit-prof">
-          Edit Profile
-        </Link>
-      </p>
+      <div className="Almighty-Buttons">
+        <button onClick={profileToggle}>Update Username</button>
+        {displayUpdateProfile && <UpdateProfile user={user} />}
+        <button onClick={passwordToggle}>Update Password</button>
+        {displayUpdatePassword && <UpdatePassword />}
+        <button>Delete Account</button>
+      </div>
     </div>
   );
 }
