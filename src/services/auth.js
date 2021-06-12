@@ -64,3 +64,10 @@ export function logout() {
     .then(successStatus)
     .catch(internalServerError);
 }
+export function GET_ME(token) {
+  return authService.get("/me", {
+    headers: {
+      authorization: token,
+    },
+  });
+}

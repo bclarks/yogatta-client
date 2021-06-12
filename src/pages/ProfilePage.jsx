@@ -9,7 +9,7 @@ function ProfilePage(props) {
   const [displayUpdateProfile, setDisplayUpdateProfile] = React.useState(false);
   const [displayUpdatePassword, setDisplayUpdatePassword] =
     React.useState(false);
-  const { user } = props;
+  const { user, authenticate } = props;
 
   function profileToggle() {
     setDisplayUpdateProfile(!displayUpdateProfile);
@@ -41,7 +41,9 @@ function ProfilePage(props) {
       </p>
       <div className="Almighty-Buttons">
         <button onClick={profileToggle}>Update Username</button>
-        {displayUpdateProfile && <UpdateProfile user={user} />}
+        {displayUpdateProfile && (
+          <UpdateProfile user={user} authenticate={authenticate} />
+        )}
         <button onClick={passwordToggle}>Update Password</button>
         {displayUpdatePassword && <UpdatePassword />}
         <button>Delete Account</button>
