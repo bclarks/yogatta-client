@@ -110,6 +110,7 @@ export default function App() {
             component={EditProfile}
             user={user}
           />
+          <NormalRoute exact path={PATHS.VIDEOPAGE} component={VideoPage} />
         </Switch>
       </div>
     </SearchWrapper>

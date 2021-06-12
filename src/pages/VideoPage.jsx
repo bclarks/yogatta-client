@@ -3,6 +3,7 @@ import { useYoutube } from "../context/Search.context.js";
 
 function VideoPage() {
   const { list } = useYoutube();
+  console.log("list: ", list);
   return (
     <div>
       {list &&
@@ -24,7 +25,6 @@ function VideoPage() {
                   </li>
                   <li>Views: {item.views}</li>
                   <li>Duration: {item.duration}</li>
-                  <li>Uploaded: {item.uploaded_at}</li>
                 </ul>
                 <img alt="" src={item.thumbnail} />
               </li>

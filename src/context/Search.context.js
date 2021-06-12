@@ -7,8 +7,11 @@ export default function SearchWrapper(props) {
   const [query, setQuery] = React.useState("Relaxing Meditation");
   const [list, setList] = React.useState(null);
   const search = (e) => {
+    console.log("HFJKHKDJSFHJKSDFH");
     e.preventDefault();
-    searchYouTube(query).then(setList);
+    return searchYouTube(query).then((response) => {
+      setList(response);
+    });
   };
 
   return (

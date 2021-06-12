@@ -5,22 +5,25 @@ import { useYoutube } from "../../context/Search.context.js";
 import { useHistory } from "react-router-dom";
 
 function SearchBar() {
+  console.log("ARE WE HUMAN");
   const { query, setQuery, search, list } = useYoutube();
   const history = useHistory();
   const handleClick = () => {
-    history.push("/VideoPage");
+    history.push(PATHS.VIDEOPAGE);
   };
   return (
     <div>
-      <form onSubmit={search}>
+      <form
+        onSubmit={(event) => {
+          search(event).then(handleClick);
+        }}
+      >
         <input
           autoFocus
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button onClick={handleClick} type="button">
-          Yogatta let go
-        </button>
+        <button type="submit">Yogatta let go</button>
       </form>
     </div>
   );
