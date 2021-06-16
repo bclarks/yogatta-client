@@ -1,6 +1,6 @@
 import React from "react";
 
-function UpdatePassword() {
+function UpdatePassword(props) {
   return (
     <form>
       <div>

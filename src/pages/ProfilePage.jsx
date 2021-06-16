@@ -1,6 +1,7 @@
 import React from "react";
 import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
+import * as USER_SERVICE from "../services/profile.service.js";
 import { Link } from "react-router-dom";
 import UpdatePassword from "../components/Profile/UpdatePassword";
 import UpdateProfile from "../components/Profile/UpdateProfile";
@@ -10,6 +11,8 @@ function ProfilePage(props) {
   const [displayUpdatePassword, setDisplayUpdatePassword] =
     React.useState(false);
   const { user, authenticate } = props;
+  const usernameFromProps = props.match.params.username;
+  const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
   function profileToggle() {
     setDisplayUpdateProfile(!displayUpdateProfile);
@@ -17,6 +20,19 @@ function ProfilePage(props) {
 
   function passwordToggle() {
     setDisplayUpdatePassword(!displayUpdatePassword);
+  }
+
+  function DeleteProfile() {
+    USER_SERVICE.USER_DELETE(usernameFromProps, accessToken)
+      .then((response) => {
+        console.log("The user has deleted");
+        props.history.push(PATHS.HOMEPAGE);
+        localStorage.removeItem(CONSTS.ACCESS_TOKEN);
+        props.authenticate(null);
+      })
+      .catch((err) => {
+        console.error("The error is: ", err.response);
+      });
   }
   return (
     <div>
@@ -46,7 +62,7 @@ function ProfilePage(props) {
         )}
         <button onClick={passwordToggle}>Update Password</button>
         {displayUpdatePassword && <UpdatePassword />}
-        <button>Delete Account</button>
+        <button onClick={DeleteProfile}>Delete Account</button>
       </div>
     </div>
   );
