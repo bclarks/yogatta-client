@@ -23,7 +23,9 @@ function SearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button type="submit">Yogatta let go</button>
+        <button className="search" type="submit">
+          Yogatta let go
+        </button>
       </form>
     </div>
   );

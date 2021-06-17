@@ -4,7 +4,7 @@ form {
   gap: 1em;
   margin-bottom: 1em;
 }
-button {
+.search {
   background: #17f;
   color: #fff;
   font: inherit;
@@ -13,7 +13,7 @@ button {
   outline: none;
   padding: 0.5em 1.5em;
 }
-button:active {
+.search:active {
   background-color: #05b;
 }
 input {

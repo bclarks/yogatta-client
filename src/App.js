@@ -106,12 +106,7 @@ export default function App() {
             component={Meditate}
             user={user}
           />
-          <ProtectedRoute
-            exact
-            path={PATHS.EDITPROFILE}
-            component={EditProfile}
-            user={user}
-          />
+
           <NormalRoute exact path={PATHS.VIDEOPAGE} component={VideoPage} />
         </Switch>
       </div>
