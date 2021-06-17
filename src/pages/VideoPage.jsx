@@ -1,5 +1,6 @@
 import React from "react";
 import { useYoutube } from "../context/Search.context.js";
+import YouTube from "react-youtube";
 
 function VideoPage() {
   const { list } = useYoutube();
@@ -19,6 +20,7 @@ function VideoPage() {
                   </b>
                   <p>{item.description}</p>
                 </div>
+                <YouTube videoId={item.id} />
                 <ul className="meta">
                   <li>
                     By: <a href={item.author.ref}>{item.author.name}</a>

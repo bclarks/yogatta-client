@@ -1,7 +1,7 @@
 import React from "react";
 import CircularProgressbar from "react-circular-progressbar";
 
-function StyledProgressbar(props) {
+function Progressbar(props) {
   return (
     <CircularProgressbar
       percentage={props.percentage}
@@ -31,4 +31,4 @@ function StyledProgressbar(props) {
     />
   );
 }
-export default StyledProgressbar;
+export default Progressbar;
