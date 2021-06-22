@@ -1,14 +1,248 @@
-import React from "react";
+import React, {Component} from "react";
+import 'react-circular-progressbar/dist/styles.css';
 import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
-import Meditation from "../components/Meditate/Meditation";
 import "./Meditate.css";
-function Meditate() {
-  return (
-    <div>
-      <Meditation />
-    </div>
-  );
+import Progressbar from "../Progressbar";
+import Sound from "react-sound";
+import SoundComponent from "../Playsound.js";
+import Slider from "../Slider";
+
+import playButton from "../svg/play.svg";
+import pauseButton from "../svg/pause.svg";
+import rainAudio from "../audio/rain.mp3";
+import forestAudio from "../audio/forest.mp3";
+import parkAudio from "../audio/park.mp3";
+import streamAudio from "../audio/stream.mp3";
+import wavesAudio from "../audio/waves.mp3";
+import loudVolumeIcon from "../svg/volume-2.svg";
+import quietVolumeIcon from "../svg/volume-1.svg";
+import noVolumeIcon from "../svg/volume-x.svg";
+import rainImg from "../img/rain.jpg";
+import forestImg from "../img/forest.jpg";
+import parkImg from "../img/park.jpg";
+import streamImg from "../img/stream.jpg";
+import wavesImg from "../img/waves.jpg";
+
+class Meditate extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pbuttonUrl: playButton,
+      audioStatus: Sound.status.STOPPED,
+      timeValues: [120, 300, 600, 900],
+      audioNames: ["Rain", "Forest", "Park", "Stream", "Waves"],
+      seekCurrentPosition: 0,
+      audioUrl: rainAudio,
+      bgImg: rainImg,
+      desiredTime: 120,
+      timeHovered: false,
+      audioHovered: false,
+      volume: 100,
+      mute: false,
+      volumeIcon: loudVolumeIcon,
+    };
+  }
+
+  timeSelect(x) {
+    this.setState({
+      desiredTime: x.duration,
+    });
+  }
+
+  playPause() {
+    console.log("playPause");
+    if (this.state.pbuttonUrl === playButton) {
+      this.setState({
+        pbuttonUrl: pauseButton,
+        audioStatus: Sound.status.PLAYING,
+      });
+    } else if (this.state.pbuttonUrl === pauseButton) {
+      this.setState({
+        pbuttonUrl: playButton,
+        audioStatus: Sound.status.PAUSED,
+      });
+    }
+  }
+
+  audioSelect(name) {
+    var x = JSON.stringify(name.audioName).replace(/["]+/g, "");
+
+    if (x === this.state.audioNames[1]) {
+      this.setState({
+        audioUrl: forestAudio,
+        bgImg: forestImg,
+      });
+    } else if (x === this.state.audioNames[2]) {
+      this.setState({
+        audioUrl: parkAudio,
+        bgImg: parkImg,
+      });
+    } else if (x === this.state.audioNames[3]) {
+      this.setState({
+        audioUrl: streamAudio,
+        bgImg: streamImg,
+      });
+    } else if (x === this.state.audioNames[4]) {
+      this.setState({
+        audioUrl: wavesAudio,
+        bgImg: wavesImg,
+      });
+    } else {
+      this.setState({
+        audioUrl: rainAudio,
+        bgImg: rainImg,
+      });
+    }
+  }
+
+  moveSeek(pos) {
+    this.setState({
+      seekCurrentPosition: (pos / this.state.desiredTime) * 100,
+    });
+
+    if (Math.floor(pos) === this.state.desiredTime) {
+      this.setState({
+        pbuttonUrl: playButton,
+        audioStatus: Sound.status.STOPPED,
+      });
+    }
+  }
+
+  handleTimeHover() {
+    this.setState({
+      timeHovered: !this.state.timeHovered,
+    });
+  }
+
+  handleAudioHover() {
+    this.setState({
+      audioHovered: !this.state.audioHovered,
+    });
+  }
+
+  volumeChange = (value) => {
+    this.setState({
+      volume: this.state.mute ? this.state.volume : value,
+      volumeIcon:
+        this.state.mute || value === 0
+          ? noVolumeIcon
+          : value <= 50
+          ? quietVolumeIcon
+          : loudVolumeIcon,
+    });
+  };
+
+  toggleMute() {
+    this.setState({
+      volumeIcon: !this.state.mute
+        ? noVolumeIcon
+        : this.state.volume <= 50
+        ? quietVolumeIcon
+        : loudVolumeIcon,
+      mute: !this.state.mute,
+    });
+  }
+
+  render() {
+    console.log(this.state.timeBtnClass);
+    const timeOptions = this.state.timeValues.map((duration) => (
+      <button
+        key={duration}
+        onMouseEnter={this.handleTimeHover.bind(this)}
+        onMouseLeave={this.handleTimeHover.bind(this)}
+        className={
+          !this.state.timeHovered && duration === this.state.desiredTime
+            ? "active"
+            : ""
+        }
+        onClick={() => {
+          this.timeSelect({ duration });
+        }}
+      >
+        {duration / 60} Minutes
+      </button>
+    ));
+
+    const audioOptions = this.state.audioNames.map((audioName) => (
+      <button
+        key={audioName}
+        onMouseEnter={this.handleAudioHover.bind(this)}
+        onMouseLeave={this.handleAudioHover.bind(this)}
+        className={
+          !this.state.audioHovered &&
+          this.state.audioUrl === "audio/" + audioName.toLowerCase() + ".mp3"
+            ? "active"
+            : ""
+        }
+        onClick={() => {
+          this.audioSelect({ audioName });
+        }}
+      >
+        {audioName}
+      </button>
+    ));
+
+    return (
+      <div className="Meditate">
+        <div className="bg-overlay"></div>
+        <div
+          className="bg"
+          style={{ backgroundImage: `url(${this.state.bgImg})` }}
+        />
+        <div className="time-menu">{timeOptions}</div>
+        <div className="player-container">
+          <img
+            className="playPause"
+            src={this.state.pbuttonUrl}
+            alt="Play"
+            onClick={(e) => {
+              this.playPause();
+            }}
+          />
+
+          <div className="volume-control">
+            <img
+              onClick={this.toggleMute.bind(this)}
+              className="volume-icon"
+              src={this.state.volumeIcon}
+              alt=""
+            />
+            &nbsp;
+            <div className="volume-slider">
+              <Slider
+                id="slider"
+                onChange={this.volumeChange}
+                step={1}
+                min={0}
+                max={100}
+                value={this.state.mute ? 0 : this.state.volume}
+              />
+            </div>
+          </div>
+
+          <div className="audioSeek">
+            <Progressbar
+              id="seek"
+              percentage={this.state.seekCurrentPosition}
+            />
+          </div>
+
+          <SoundComponent
+            playStatus={this.state.audioStatus}
+            url={this.state.audioUrl}
+            funcPerc={this.moveSeek.bind(this)}
+            desiredT={this.state.desiredTime}
+            volume={this.state.mute ? 0 : this.state.volume}
+          />
+          <div className="timer">00 : 00</div>
+        </div>
+
+        <div className="audio-menu">{audioOptions}</div>
+      </div>
+    );
+  }
 }
 
 export default Meditate;
+

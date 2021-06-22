@@ -15,7 +15,6 @@ import ProfilePage from "./pages/ProfilePage";
 import VideoPage from "./pages/VideoPage";
 import MyVideos from "./pages/MyVideos.jsx";
 import Meditate from "./pages/Meditate.jsx";
-import EditProfile from "./pages/EditProfile.jsx";
 import * as AUTH_SERVICE from "./services/auth";
 import SearchWrapper from "./context/Search.context";
 

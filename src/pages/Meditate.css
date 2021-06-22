@@ -27,7 +27,7 @@
 }
 
 button {
-  background: rgb(244, 242, 245);
+  background: none;
   border: 2px #ffffffcc solid;
   padding: 16px;
   width: 100px;
@@ -87,11 +87,11 @@ button .active {
 }
 
 .time-menu {
-  background-color: #fcfcfc;
+  background-color: transparent;
 }
 
 .player-container {
-  background-color: #f7f7fc;
+  background-color: transparent;
   position: relative;
 }
 
@@ -106,7 +106,7 @@ button .active {
 }
 
 .audio-menu {
-  background-color: #fafcfa;
+  background-color: transparent;
 }
 
 .playPause {
