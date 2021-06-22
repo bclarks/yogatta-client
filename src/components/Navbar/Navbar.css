@@ -38,6 +38,13 @@ nav {
 .nav-logoutbtn:hover {
   color: #ffffff;
 }
-Navbar{
-  background-color: lavender;
+Nav{
+  font-family: papyrus;
+}
+
+.profpage{
+  font-family: papyrus;
+  color: purple;
+  text-decoration: none;
+
 }

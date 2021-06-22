@@ -21,7 +21,7 @@ const Navbar = (props) => {
               Protected Page
             </Link> */}
 
-            <Link to={PATHS.PROFILEPAGE}>Profile</Link>
+            <Link to={PATHS.PROFILEPAGE} className="profpage" >Profile</Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
             </button>
