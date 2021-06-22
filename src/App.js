@@ -17,6 +17,7 @@ import MyVideos from "./pages/MyVideos.jsx";
 import Meditate from "./pages/Meditate.jsx";
 import * as AUTH_SERVICE from "./services/auth";
 import SearchWrapper from "./context/Search.context";
+import "./App.css";
 
 export default function App() {
   const [user, setUser] = useState(null);

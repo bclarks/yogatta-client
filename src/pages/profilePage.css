@@ -1,0 +1,29 @@
+.Almight-Buttons {
+  
+    border: 2px #ffffffcc solid;
+    padding: 16px;
+    width: 100px;
+    border-radius: 1%;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    box-shadow: none;
+    color: rgb(209, 98, 243);
+    background-color: #ffffffcc;
+    border: none;
+    width: 140px;
+    padding: 24px;
+    font-size: 17px;
+  }
+  .med-link{
+    color: rgb(214, 133, 252);
+    font-family: papyrus;
+  text-decoration: none;
+  text-transform: uppercase;
+  }
+  h1, h2{
+    font-family: papyrus;
+  }

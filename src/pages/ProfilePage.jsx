@@ -5,6 +5,7 @@ import * as USER_SERVICE from "../services/profile.service.js";
 import { Link } from "react-router-dom";
 import UpdatePassword from "../components/Profile/UpdatePassword";
 import UpdateProfile from "../components/Profile/UpdateProfile";
+import "./profilePage.css";
 
 function ProfilePage(props) {
   const [displayUpdateProfile, setDisplayUpdateProfile] = React.useState(false);
@@ -48,13 +49,13 @@ function ProfilePage(props) {
         <Link to={PATHS.MEDIDATE} className="med-link">
           Meditate
         </Link>
-      </p>
+      </p><br></br><br></br>
 
-      <p>
+      {/* <p>
         <Link to={PATHS.MYVIDEOS} className="saved-link">
           My saved videos
         </Link>
-      </p>
+      </p> */}
       <div className="Almighty-Buttons">
         <button onClick={profileToggle}>Update Username</button>
         {displayUpdateProfile && (

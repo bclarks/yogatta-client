@@ -27,14 +27,15 @@
 }
 
 button {
-  background: none;
-  border: 2px #ffffffcc solid;
+  background: transparent;
+  border: 2px #888787cc solid;
   padding: 16px;
   width: 100px;
 
   border-radius: 1%;
-  color: #fff;
+  color: rgb(165, 187, 250);
   font-size: 14px;
+  font-family: papyrus;
   transition: all 0.3s ease;
 }
 
